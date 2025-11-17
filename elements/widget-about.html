@@ -7,22 +7,25 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<link rel="import" href="../../assets/libs/polymer/polymer.html">
+<link rel="import" href="../../assets/libs/polymer/polymer.html" />
 
 <dom-module id="widget-about">
+    <template>
+        <iron-ajax
+            url="https://vimeo.com/api/v2/4487625/info.json"
+            last-response="{{data}}"
+            auto
+        ></iron-ajax>
+        <style include="shared-styles"></style>
+        <style>
+            :host {
+                display: block;
+                -webkit-column-count: 2;
+                box-sizing: border-box;
+                padding: 2.4rem 1.2rem 2.4rem 1.2rem;
+            }
 
-	<template>
-		<iron-ajax url="https://vimeo.com/api/v2/4487625/info.json" last-response="{{data}}" auto></iron-ajax>
-		<style include='shared-styles'></style>
-		<style>
-			:host {
-				display: block;
-				-webkit-column-count: 2;
-				box-sizing: border-box;
-				padding: 2.4rem 1.2rem 2.4rem 1.2rem;
-			}
-
-			/*p {
+            /*p {
 				color: var(--darker-color);
 				font-size: var(--medium-size);
 				font-weight: 200;
@@ -41,51 +44,104 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				padding-right: 2rem;
 			}*/
 
-			iron-image {
-				width: 100%;
-				background-color: black;
-			}
+            iron-image {
+                width: 100%;
+                background-color: black;
+            }
 
-			iron-image:before {
-				content: "";
-				display: block;
-				margin-top: 100%;
-			}
+            iron-image:before {
+                content: "";
+                display: block;
+                margin-top: 100%;
+            }
 
-			h2 {
-				font-weight: 300;
-				margin: 0;
-			}
+            h2 {
+                font-weight: 300;
+                margin: 0;
+            }
 
-			@media screen and (max-width: 640px) {
-				:host {
-					-webkit-column-count: 1;
-				}
-				:host {
-					padding: 1.2rem .6rem 1.2rem .6rem;
-				}
-			}
-		</style>
-		<!--<iron-image sizing="cover" preload fade src="{{data.portrait_huge}}"></iron-image>-->
-		<h2>About</h2>
-		<!--<p>{{data.about}}</p>-->
-		<p><b><i>“In all my work I’m trying to find those moments of humanity that make us connect emotionally with a story.”</i></b></p>
-		<p>Tomas Jonsgarden is an award-winning director with a background in music and still photography.</p>
-		<p>After graduating from Stockholm film school, Tomas began working as a director’s assistant at Pettersson Akerlund where he would rub shoulders with directors such as Jonas Akerlund; needless to say the influence was great. The desire to further grow his knowledge and aesthetic eye led to a job as a photographer’s assistant. After years as assistant Tomas began shooting advertising and editorial for hire.</p>
-		<p>Tomas’ ambition to direct commercials took a big leap forward when he got offered to start working as a director at the production company Forsberg & Co, in Stockholm 2001. It is here that Tomas began to hone in on his personal style through a variety of commercials, music videos and a few longer form jobs for Swedish Television.</p>
-		<p>2004 marked the beginning of a successful collaboration with the producer Magnus Akerstedt. Tomas and Magnus have been a director/producer team ever since.</p>
-		<p>In 2007 Tomas was voted ”The Most Talented Commercial Director” in Sweden from both the major ad agencies and by a renowned ad-magazine. In the same year Tomas navigated through the tricky game of directing the high profile actor Richard Gere in a commercial. The collaboration was so successful that the superstar insisted Tomas to direct his next commercial project.</p>
-		<p>In 2010 Tomas wrote and directed his first short film “Want To See Something?”, based on a story by Raymond Carver. The film was highly appreciated at festivals such as Montreal, Warsaw, Foyle and Alcine. It honored the grand press award at Lille film festival in France.</p>
-		<p>Tomas’ body of work is constantly growing and he has worked with the world’s biggest brands including Volvo, Ikea, Netflix and HBO.</p>
-		<p>His films take on a beautiful style of cinematic storytelling always with a human story at its core. He has a way of making everyday moments epic by capturing the subtle twitches of humanity that makes us laugh, cry or blush when we recognize ourselves in them. It takes a great director to imitate those gestures for the screen and it is something that has earned him awards at shows like Cannes Lions, Epica, Eurobest and New York Festivals amongst others.</p>
-		<iron-image sizing="cover" preload fade src="/assets/images/about.jpeg"></iron-image>
-	</template>
+            @media screen and (max-width: 640px) {
+                :host {
+                    -webkit-column-count: 1;
+                }
+                :host {
+                    padding: 1.2rem 0.6rem 1.2rem 0.6rem;
+                }
+            }
+        </style>
+        <!--<iron-image sizing="cover" preload fade src="{{data.portrait_huge}}"></iron-image>-->
+        <h3>About</h3>
+        <!--<p>{{data.about}}</p>-->
+        <p>
+            <b
+                ><i
+                    >“In all my work I’m trying to find those moments of
+                    humanity that make us connect emotionally with a story.”</i
+                ></b
+            >
+        </p>
+        <p>
+            Tomas Jonsgarden is an award-winning director and screenwriter with
+            a background in music and still photography.
+        </p>
+        <p>
+            After studying music at Uppsala University, and graduating from
+            Stockholm Film School, Tomas began working as a director’s
+            assistant. The desire to further grow his knowledge and aesthetic
+            eye led to a job as a photographer’s assistant. After years as
+            assistant Tomas began shooting advertising and editorial for hire.
+        </p>
+        <p>
+            Tomas’ ambition to direct commercials took a big leap forward when
+            he got offered to start working as a director at the production
+            company Forsberg & Co, in Stockholm 2001. It is here that Tomas
+            began to hone in on his personal style through a variety of
+            commercials and music videos.
+        </p>
+        <p>
+            2004 marked the beginning of a successful collaboration with the
+            producer Magnus Åkerstedt. Tomas and Magnus have been a
+            director/producer team ever since.
+        </p>
+        <p>
+            In 2007 Tomas was voted ”The Most Talented Commercial Director” in
+            Sweden from both the major ad agencies and by a renowned
+            ad-magazine. In the same year Tomas navigated through the tricky
+            game of directing the high profile actor Richard Gere in a
+            commercial. The collaboration was so successful that the superstar
+            insisted Tomas to direct his next commercial project.
+        </p>
+        <p>
+            Since then, Tomas has made numerous high end commercials and short
+            films and worked with several superstar actors through the years.
+            Recently, he made his long-form directorial debut with the Swedish
+            TV drama <i>MAFIA</i>.
+        </p>
+        <p>
+            His films take on a beautiful style of cinematic storytelling always
+            with a human story at its core. He has a way of making everyday
+            moments epic by capturing the subtle twitches of humanity that makes
+            us laugh, cry or blush when we recognize ourselves in them. It takes
+            a great director to imitate those gestures for the screen and it is
+            something that has earned him awards at shows like Cannes Lions,
+            British Arrows, Epica, Eurobest and New York Festivals amongst
+            others.
+        </p>
+        <p>
+            In 2023 Tomas was awarded ”Director of the year” at the Swedish ROY
+            Awards.
+        </p>
+        <iron-image
+            sizing="cover"
+            preload
+            fade
+            src="/assets/images/about.jpeg"
+        ></iron-image>
+    </template>
 
-	<script>
-		Polymer({
-			is: 'widget-about',
-
-		});
-	</script>
-
+    <script>
+        Polymer({
+            is: "widget-about",
+        });
+    </script>
 </dom-module>

@@ -78,9 +78,9 @@ Sample external links:
 The ajax to videos config cdn progressive links https://player.vimeo.com/video/169325478/config?token=efc8e0f1d6018066b758519bcb307208338c47ca
 
 Proper API call for public and private videos:
-Fiction: https://api.vimeo.com/me/albums/2329080/videos?per_page=50&sort=date&direction=desc&access_token=5329144dd1b697d05bbf580d3b10c6d3
+Films: https://api.vimeo.com/me/albums/2329080/videos?per_page=50&sort=date&direction=desc&access_token=84b9fbcdd4baa488372baa6f2a45f249
 
-Commercials: https://api.vimeo.com/me/albums/2329074/videos?per_page=50&sort=date&direction=desc&access_token=5329144dd1b697d05bbf580d3b10c6d3
+Commercials: https://api.vimeo.com/me/albums/2329074/videos?per_page=50&sort=date&direction=desc&access_token=84b9fbcdd4baa488372baa6f2a45f249
 
 
 

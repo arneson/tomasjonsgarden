@@ -59,7 +59,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       iron-image:before {
         content: "";
         display: block;
-        margin-top: calc(100%*var(--aspect-ratio));
+        /* margin-top: calc(100%*var(--aspect-ratio)); */
       }
 
       .dim-screen {
@@ -100,6 +100,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         max-width: 86rem;
         padding: 0;
         box-sizing: border-box;
+      }
+
+      .video-player-wrapper {
+        position: relative;
       }
 
       .video-controls {
@@ -147,6 +151,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .play-pause:after {
         content: 'Play';
       }
+      .full-screen-button {
+        cursor:pointer;
+      }
+      .full-screen-button:hover {
+        opacity: 0.7;
+      }
 
       .play-pause.pause:after {
         content: 'Pause';
@@ -188,6 +198,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				align-items: center;
 				font-size: 1.8rem;
 				padding: 2.4rem 0 2.4rem 0;
+        justify-content: space-between;
 			}
 
 			header span {
@@ -204,22 +215,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				margin-right: 1.25rem;
 				margin-left: 1.25rem;
 			}
+
+      .iron-image-main {
+        background-color: transparent;
+      }
+
     </style>
 
     <div class="dim-screen">
       <div class="dim">
         <div class="video-player">
           <header>
-            <b>[[videoTitle]][[ironImageTitle]]</b>
-            <span>[[videoDescription]][[ironImageDescription]]</span>
-            <template is="dom-repeat" class="style-scope widget-slideshow"></template>
+            <div>
+              <b>[[videoTitle]][[ironImageTitle]]</b>
+              <span>[[videoDescription]][[ironImageDescription]]</span>
+              <template is="dom-repeat" class="style-scope widget-slideshow"></template>
+            </div>
+            <div class="full-screen-button" style="display: none;">
+              <img width="30px" height="20px" alt="Toggle fullscreen" src="../assets/svg/full-screen.svg"></img>
+            </div>
           </header>
-          <play-svg-icon on-click="handleClick"></play-svg-icon>
-          <video class="play-pause" src="[[computedSrc(video)]]" autoplay></video>
-          <iron-image sizing="{{ironImageOrientation}}" preload fade src="[[ironImageSrc]]"></iron-image>
-          <div class="video-controls">
-            <div class="video-scrubber">
-              <div class="video-progress">
+          <div class="video-player-wrapper">
+            <play-svg-icon on-click="handleClick"></play-svg-icon>
+            <video allowfullscreen class="play-pause" src="[[computedSrc(video)]]" autoplay></video>
+            <iron-image class="iron-image-main" sizing="contain" position="top" preload fade src="[[ironImageSrc]]" ></iron-image>
+            <div class="video-controls">
+              <div class="video-scrubber">
+                <div class="video-progress">
+                </div>
               </div>
             </div>
           </div>
@@ -246,11 +269,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     }
                 },
                 computedSrc: function(video) {
-                    console.log(video);
+                    var $wrapper = $(this),
+                          $fullscreen = $('.full-screen-button', $wrapper);
                     if (video) {
+                        $fullscreen.show();
                         app.playButton.toggle('click');
                         return video;
                     } else {
+                        $fullscreen.hide();
                         app.playButton.toggle('click');
                         return false;
                     }
@@ -265,6 +291,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             $scrubber = $('.video-scrubber', $wrapper),
                             $progress = $('.video-progress', $wrapper),
                             $duration = $('.video-duration', $wrapper);
+                            $fullscreen = $('.full-screen-button', $wrapper);
 
                         /*  --------------------------------------------------------
                         	No-JS Friendly
@@ -275,7 +302,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         // show custom controls
                         $controls.show();
 
+                     
+                        $fullscreen.on('mousedown', function(e) {
+                          e.stopPropagation();
 
+                          if ($video[0].mozRequestFullScreen) {
+                            $video[0].mozRequestFullScreen();
+                          } else if ($video[0].webkitRequestFullScreen) {
+                            $video[0].webkitRequestFullScreen();
+                          }
+                        })
                         /*  --------------------------------------------------------
                         	Play/Pause
                         	-------------------------------------------------------- */

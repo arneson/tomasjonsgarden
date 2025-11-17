@@ -7,298 +7,330 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<link rel="import" href="../../assets/libs/polymer/polymer.html">
+<link rel="import" href="../../assets/libs/polymer/polymer.html" />
 
 <dom-module id="widget-photos">
-	<template>
-		<style include='shared-styles'></style>
-		<style>
-			:host {
-				@apply(--layout-horizontal);
-				@apply(--layout-wrap);
-				box-sizing: border-box;
-				padding-top: 1.2rem;
-				padding-bottom: 1.2rem;
-				font-size: var(--medium-size);
-			}
+    <template>
+        <style include="shared-styles"></style>
+        <style>
+            :host {
+                @apply (--layout-horizontal);
+                @apply (--layout-wrap);
+                box-sizing: border-box;
+                padding-top: 1.2rem;
+                padding-bottom: 1.2rem;
+                font-size: var(--medium-size);
+            }
 
-			 :host:first-child {
-				padding-bottom: 0;
-			}
+            :host:first-child {
+                padding-bottom: 0;
+            }
 
-			div {
-				flex-basis: calc(100%/3);
-				max-width: calc(100%/3);
-				color: grey;
-				background-color: black;
-				box-sizing: border-box;
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: center;
-				padding: 1.2rem;
-				position: relative;
-			}
+            div {
+                flex-basis: calc(100% / 3);
+                max-width: calc(100% / 3);
+                color: grey;
+                background-color: black;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                padding: 1.2rem;
+                position: relative;
+            }
 
-			 :host[orientation="portrait"] div {
-				flex-basis: calc(100%/4);
-				color: grey;
-				background-color: black;
-				box-sizing: border-box;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				padding: 0 1.2rem 0 1.2rem;
-			}
+            :host[orientation="portrait"] div {
+                flex-basis: calc(100% / 4);
+                color: grey;
+                background-color: black;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0 1.2rem 0 1.2rem;
+            }
 
-			div p {
-				position: absolute;
-				z-index: 1;
-				opacity: 0;
-				cursor: pointer;
-				font-size: 1.8rem;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				max-width: calc(100% - 20px);
-				padding: 1.2rem;
-				left: 0;
-				right: 0;
-				margin: 0 auto;
-				top: 0;
-				bottom: 0;
-				pointer-events: none;
-				/* width: calc(100% - 20px); */
-				box-sizing: border-box;
-			}
+            div p {
+                position: absolute;
+                z-index: 1;
+                opacity: 0;
+                cursor: pointer;
+                font-size: 1.8rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                max-width: calc(100% - 20px);
+                padding: 1.2rem;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                top: 0;
+                bottom: 0;
+                pointer-events: none;
+                /* width: calc(100% - 20px); */
+                box-sizing: border-box;
+            }
 
-			div:hover p {
-				opacity: 1;
-			}
-			/* span:not(:first-child):not(:empty):before {
+            div:hover p {
+                opacity: 1;
+            }
+            /* span:not(:first-child):not(:empty):before {
         content: '|';
         margin-right: 10px;
         margin-left: 10px;
       } */
 
-			span {
-				font-weight: 100;
-			}
+            span {
+                font-weight: 100;
+            }
 
-			span {
-				/* white-space: nowrap;
+            span {
+                /* white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis; */
-			}
+            }
 
-			span:first-child {
-				color: white;
-				/*font-style: italic;*/
-				font-weight: 600;
-				/* white-space: nowrap;
+            span:first-child {
+                color: white;
+                /*font-style: italic;*/
+                font-weight: 600;
+                /* white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis; */
-				/* flex-shrink: 0; */
-				/* max-width: 60%; */
-			}
+                /* flex-shrink: 0; */
+                /* max-width: 60%; */
+            }
 
-			 :host iron-image {
-				width: 100%;
-				background-size: 140% !important;
-				background-color: black;
-				cursor: pointer;
-				transition: opacity .3s ease-in-out;
-			}
+            :host iron-image {
+                width: 100%;
+                background-size: 140% !important;
+                background-color: black;
+                cursor: pointer;
+                transition: opacity 0.3s ease-in-out;
+            }
 
-			iron-image:before {
-				content: "";
-				display: block;
-				margin-top: calc(100%*var(--aspect-ratio));
-			}
+            iron-image:before {
+                content: "";
+                display: block;
+                margin-top: calc(100% * var(--aspect-ratio));
+            }
 
-			 :host[orientation="portrait"] iron-image {
-				width: 100%;
-				background-size: 100% !important;
-				background-color: black;
-				cursor: pointer;
-				transition: opacity .3s ease-in-out;
-			}
+            :host[orientation="portrait"] iron-image {
+                width: 100%;
+                background-size: 100% !important;
+                background-color: black;
+                cursor: pointer;
+                transition: opacity 0.3s ease-in-out;
+            }
 
-			:host[orientation="portrait"] iron-image:before {
-				content: "";
-				display: block;
-				margin-top: calc(200%*var(--aspect-ratio));
-			}
+            :host[orientation="portrait"] iron-image:before {
+                content: "";
+                display: block;
+                margin-top: calc(200% * var(--aspect-ratio));
+            }
 
-			div:hover iron-image {
-				opacity: .3;
-			}
+            div:hover iron-image {
+                opacity: 0.3;
+            }
 
-			@media screen and (max-width: 768px) {
-				div {
-					flex-basis: calc(100%/2);
-					max-width: calc(100%/2);
-					color: grey;
-					background-color: black;
-					box-sizing: border-box;
-					display: flex;
-					flex-direction: column;
-					padding: .6rem;
-				}
-				:host[orientation="portrait"] div {
-					flex-basis: calc(100%/3);
-					color: grey;
-					background-color: black;
-					box-sizing: border-box;
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					padding: 0 1.2rem 0 1.2rem;
-				}
-			
-			
-			
-			
-			
-			
-			}
+            @media screen and (max-width: 768px) {
+                div {
+                    flex-basis: calc(100% / 2);
+                    max-width: calc(100% / 2);
+                    color: grey;
+                    background-color: black;
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0.6rem;
+                }
+                :host[orientation="portrait"] div {
+                    flex-basis: calc(100% / 3);
+                    color: grey;
+                    background-color: black;
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 0 1.2rem 0 1.2rem;
+                }
+            }
 
-			@media screen and (max-width: 640px) {
-				div {
-					padding: .6rem;
-				}
-				div p {
-					/* margin-top: .6rem;
+            @media screen and (max-width: 640px) {
+                div {
+                    padding: 0.6rem;
+                }
+                div p {
+                    /* margin-top: .6rem;
           margin-bottom: .6rem; */
-				}
-			}
+                }
+            }
 
-			@media screen and (min-width: 0) and (max-width: 480px) {
-				div {
-					flex-basis: calc(100%/2);
-					/* max-width: calc(100%/2); */
-					color: grey;
-					background-color: black;
-					box-sizing: border-box;
-					display: flex;
-					flex-direction: column;
-					/*padding: 0;*/
-				}
-				:host[orientation="portrait"] div {
-					flex-basis: calc(100%/2);
-					color: grey;
-					background-color: black;
-					box-sizing: border-box;
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					padding: 0 1.2rem 0 1.2rem;
-				}
-			}
-		</style>
-		<!--<iron-ajax url="data.json" last-response="{{data}}" auto></iron-ajax>-->
-		<iron-ajax url="{{src}}" on-error="handleError" last-response="{{data}}" auto></iron-ajax>
+            @media screen and (min-width: 0) and (max-width: 480px) {
+                div {
+                    flex-basis: calc(100% / 2);
+                    /* max-width: calc(100%/2); */
+                    color: grey;
+                    background-color: black;
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    /*padding: 0;*/
+                }
+                :host[orientation="portrait"] div {
+                    flex-basis: calc(100% / 2);
+                    color: grey;
+                    background-color: black;
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 0 1.2rem 0 1.2rem;
+                }
+            }
 
-		<template is="dom-repeat" items="{{computeData(data)}}" filter="_orientation">
-			<div>
-				<p>
-					<span>{{item.title.$t}}</span>
-					<!--<span>{{item.media$group.media$content.0.width}}</span>
+            .thumbnail-iron-image {
+                background-size: cover !important;
+            }
+        </style>
+        <!--<iron-ajax url="data.json" last-response="{{data}}" auto></iron-ajax>-->
+        <iron-ajax
+            url="{{ src }}"
+            on-error="(handleError)"
+            last-response="{{ data }}"
+            auto
+        ></iron-ajax>
+
+        <template
+            is="dom-repeat"
+            items="{{ computeData(data) }}"
+            filter="_orientationFilter"
+        >
+            <div>
+                <p>
+                    <span>{{ item.title.$t }}</span>
+                    <!--<span>{{item.media$group.media$content.0.width}}</span>
 					<span>{{item.media$group.media$content.0.height}}</span>-->
-				</p>
-				<iron-image sizing="cover" preload fade src="{{computeImages(item.media$group.media$thumbnail.0.url)}}" on-click="clickHandler"></iron-image>
-			</div>
-		</template>
-	</template>
-	<script>
-		(function () {
-			'use strict';
+                </p>
+                <iron-image
+                    class="thumbnail-iron-image"
+                    preload
+                    fade
+                    sizing="cover"
+                    src="{{ item.thumbnail }}"
+                    on-click="clickHandler"
+                ></iron-image>
+            </div>
+        </template>
+    </template>
+    <script>
+        (function() {
+            "use strict";
 
-			Polymer({
-				is: 'widget-photos',
-				properties: {
-					orientation: {
-						type: String
-					},
-					route: {
-						type: String,
-						notify: true,
-					},
-					src: {
-						type: String,
-						notify: true,
-					},
-					items: {
-						type: Array,
-						notify: true,
-					}
-				},
-				handleError: function (data) {
-					console.log('error: ', data);
-				},
-				_filter: function (val) {
-					return function () {
-						// filter="{{_filter(data)}}"
-						return console.log(val);
-					};
-				},
-				_orientation: function (item) {
-					if (this.orientation && this.orientation === 'portrait') {
-						return item && (item.media$group.media$content[0].width < item.media$group.media$content[0].height);
-					} else if (this.orientation && this.orientation === 'landscape') {
-						return item && (item.media$group.media$content[0].width >= item.media$group.media$content[0].height);
-					} else {
-						return item;
-					}
-				},
-				computeImages: function (image) {
-					return image.replace('s72', 's900');
-				},
-				computeData: function (data) {
-					console.log(this.route);
-					console.log(data.feed.entry);
-					// data-route="photography"
-					return data.feed.entry;
-				},
-				computeTags: function (tags) {
-					console.log(tags.split(' ').splice(0, 1));
-					return tags.split(' ').splice(0, 1);
-				},
-				computeDate: function (date) {
-					var d = new Date(date);
-					return d.getFullYear();
-				},
-				ready: function () {
-					this.items = [];
-				},
-				clickHandler: function (e) {
-					e.stopPropagation();
-					console.log(e.model.get('item.title.$t'));
-					var lightBox = $('light-box');
-					lightBox.attr('iron-image', e.model.get('item.title.$t'));
-					lightBox.attr('iron-image-title', e.model.get('item.title.$t'));
-					lightBox.attr('iron-image-src', e.model.get('item.media$group.media$thumbnail')[2].url.replace('288', '2500'));
-					lightBox.attr('iron-image-orientation', 'contain');
-					// this.orientation
-					if (this.orientation === 'landscape') {
-						lightBox.attr('iron-image-orientation', 'cover');
-					} else {
-						lightBox.attr('iron-image-orientation', 'contain');
-					}
+            Polymer({
+                is: "widget-photos",
+                properties: {
+                    orientation: {
+                        type: String
+                    },
+                    route: {
+                        type: String,
+                        notify: true
+                    },
+                    src: {
+                        type: String,
+                        notify: true
+                    },
+                    items: {
+                        type: Array,
+                        notify: true
+                    }
+                },
+                handleError: function(data) {
+                    console.log("error: ", data);
+                },
+                _filter: function(val) {
+                    return function() {
+                        // filter="{{_filter(data)}}"
+                        return console.log(val);
+                    };
+                },
+                _orientationFilter: function(item) {
+                    const { width, height } = item;
+                    if (this.orientation && this.orientation === "portrait") {
+                        return item && width < height;
+                    } else if (
+                        this.orientation &&
+                        this.orientation === "landscape"
+                    ) {
+                        return item && width >= height;
+                    } else {
+                        return item;
+                    }
+                },
+                computeData: function(data) {
+                    const { items, includes } = data;
+                    if (items.length < 1) {
+                        return [];
+                    }
+                    const stills = items[0];
+                    const { Asset: assets } = includes;
+                    const { images } = stills.fields;
+                    return images.map(image => {
+                        const asset = assets.find(
+                            asset => asset.sys.id === image.sys.id
+                        );
+                        const item = { ...image.sys, ...asset.fields };
 
-					app.playButton.toggle('click');
-					lightBox.children('.dim-screen').on('mousedown', function () {
-						e.stopPropagation();
-						lightBox.removeAttr('iron-image iron-image-title iron-image-src');
-						// lightBox.removeAttr('video');
-						return false;
-						// app.playButton.toggle('click');
-					});
-					return false;
-				}
-			});
-		})();
-	</script>
+                        const { file, title } = item;
+                        const { url, details } = file;
+                        return {
+                            original: item,
+                            url: `${url}?w=2000&h=2000`,
+                            width: details.image.width,
+                            height: details.image.height,
+                            title,
+                            thumbnail: `${url}?w=500&h=500`
+                        };
+                    });
+                },
+                computeDate: function(date) {
+                    var d = new Date(date);
+                    return d.getFullYear();
+                },
+                ready: function() {
+                    this.items = [];
+                },
+                clickHandler: function(e) {
+                    e.stopPropagation();
+                    const item = e.model.get("item");
+                    var lightBox = $("light-box");
+                    lightBox.attr("iron-image", item.title);
+                    lightBox.attr("iron-image-title", item.title);
+                    lightBox.attr("iron-image-src", item.url);
+                    lightBox.attr("iron-image-orientation", "contain");
+                    // this.orientation
+                    if (this.orientation === "landscape") {
+                        lightBox.attr("iron-image-orientation", "cover");
+                    } else {
+                        lightBox.attr("iron-image-orientation", "contain");
+                    }
 
+                    app.playButton.toggle("click");
+                    lightBox
+                        .children(".dim-screen")
+                        .on("mousedown", function() {
+                            e.stopPropagation();
+                            lightBox.removeAttr(
+                                "iron-image iron-image-title iron-image-src"
+                            );
+                            return false;
+                        });
+                    return false;
+                }
+            });
+        })();
+    </script>
 </dom-module>

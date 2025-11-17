@@ -1,154 +1,212 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Polymer Starter Kit" />
+        <title>Tomas Jonsgården</title>
+        <meta name="theme-color" content="#2E3AA1" />
+        <link rel="manifest" href="manifest.json" />
+        <meta name="msapplication-TileColor" content="#3372DF" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="PSK" />
+        <link
+            rel="icon"
+            sizes="192x192"
+            href="images/touch/chrome-touch-icon-192x192.png"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit" />
+        <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png" />
+        <meta
+            name="msapplication-TileImage"
+            content="images/touch/ms-touch-icon-144x144-precomposed.png"
+        />
+        <script src="assets/libs/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="assets/libs/Snap.svg/dist/snap.svg-min.js"></script>
+        <script src="assets/vendors/svgicons.js"></script>
+        <script src="assets/vendors/svgicons-config.js"></script>
+        <style is="custom-style" include="shared-styles"></style>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: ["Open+Sans:400,300,600,700,800:latin"],
+                },
+            };
+            (function () {
+                var wf = document.createElement("script");
+                wf.src =
+                    ("https:" == document.location.protocol
+                        ? "https"
+                        : "http") +
+                    "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="assets/libs/page/page.js"></script>
+        <link rel="import" href="assets/libs/iron-icons/iron-icons.html" />
+        <link rel="import" href="assets/libs/iron-pages/iron-pages.html" />
+        <link
+            rel="import"
+            href="assets/libs/iron-selector/iron-selector.html"
+        />
+        <link rel="import" href="assets/libs/iron-ajax/iron-ajax.html" />
+        <link
+            rel="import"
+            href="assets/libs/iron-menu-behavior/iron-menu-behavior.html"
+        />
+        <link
+            rel="import"
+            href="assets/libs/paper-drawer-panel/paper-drawer-panel.html"
+        />
+        <link
+            rel="import"
+            href="assets/libs/paper-icon-button/paper-icon-button.html"
+        />
+        <link rel="import" href="assets/libs/paper-item/paper-item.html" />
+        <link
+            rel="import"
+            href="assets/libs/paper-material/paper-material.html"
+        />
+        <link rel="import" href="assets/libs/paper-menu/paper-menu.html" />
+        <link
+            rel="import"
+            href="assets/libs/paper-styles/paper-styles-classes.html"
+        />
+        <link rel="import" href="assets/libs/paper-toast/paper-toast.html" />
+        <link
+            rel="import"
+            href="assets/libs/paper-toolbar/paper-toolbar.html"
+        />
+        <link
+            rel="import"
+            href="assets/libs/paper-radio-group/paper-radio-group.html"
+        />
+        <link
+            rel="import"
+            href="assets/libs/paper-spinner/paper-spinner.html"
+        />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Polymer Starter Kit" />
-  <title>Tomas Jonsgården</title>
-  <meta name="theme-color" content="#2E3AA1">
-  <link rel="manifest" href="manifest.json">
-  <meta name="msapplication-TileColor" content="#3372DF">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="PSK">
-  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
-  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
-  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-  <script src="assets/libs/webcomponentsjs/webcomponents-lite.min.js"></script>
-  <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="assets/libs/Snap.svg/dist/snap.svg-min.js"></script>
-  <script src="assets/vendors/svgicons.js"></script>
-  <script src="assets/vendors/svgicons-config.js"></script>
-  <style is="custom-style" include="shared-styles"></style>
-  <script type="text/javascript">
-      WebFontConfig = {
-          google: {
-              families: ['Open+Sans:400,300,600,700,800:latin']
-          }
-      };
-      (function() {
-          var wf = document.createElement('script');
-          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-              '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-          wf.type = 'text/javascript';
-          wf.async = 'true';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(wf, s);
-      })();
-  </script>
-  <script src="assets/libs/page/page.js"></script>
-  <link rel="import" href="assets/libs/iron-icons/iron-icons.html">
-  <link rel="import" href="assets/libs/iron-pages/iron-pages.html">
-  <link rel="import" href="assets/libs/iron-selector/iron-selector.html">
-  <link rel="import" href="assets/libs/iron-ajax/iron-ajax.html">
-  <link rel="import" href="assets/libs/iron-menu-behavior/iron-menu-behavior.html">
-  <link rel="import" href="assets/libs/paper-drawer-panel/paper-drawer-panel.html">
-  <link rel="import" href="assets/libs/paper-icon-button/paper-icon-button.html">
-  <link rel="import" href="assets/libs/paper-item/paper-item.html">
-  <link rel="import" href="assets/libs/paper-material/paper-material.html">
-  <link rel="import" href="assets/libs/paper-menu/paper-menu.html">
-  <link rel="import" href="assets/libs/paper-styles/paper-styles-classes.html">
-  <link rel="import" href="assets/libs/paper-toast/paper-toast.html">
-  <link rel="import" href="assets/libs/paper-toolbar/paper-toolbar.html">
-  <link rel="import" href="assets/libs/paper-radio-group/paper-radio-group.html">
-  <link rel="import" href="assets/libs/paper-spinner/paper-spinner.html">
+        <link rel="import" href="elements/iron-image.html" />
+        <link rel="import" href="elements/app-theme.html" />
+        <link rel="import" href="elements/shared-styles.html" />
+        <link rel="import" href="elements/light-box.html" />
+        <link rel="import" href="elements/widget-header.html" />
+        <link rel="import" href="elements/widget-slideshow.html" />
+        <link rel="import" href="elements/widget-about.html" />
+        <link rel="import" href="elements/widget-contact.html" />
+        <link rel="import" href="elements/widget-feature.html" />
+        <link rel="import" href="elements/widget-photos.html" />
+        <link rel="import" href="elements/widget-videos.html" />
+        <link rel="import" href="elements/play-svg-icon.html" />
+        <link rel="import" href="elements/component-svg-icon.html" />
+        <link rel="import" href="elements/widget-poster.html" />
+    </head>
 
-  <link rel="import" href="elements/iron-image.html">
-  <link rel="import" href="elements/app-theme.html">
-  <link rel="import" href="elements/shared-styles.html">
-  <link rel="import" href="elements/light-box.html">
-  <link rel="import" href="elements/widget-header.html">
-  <link rel="import" href="elements/widget-slideshow.html">
-  <link rel="import" href="elements/widget-about.html">
-  <link rel="import" href="elements/widget-contact.html">
-  <link rel="import" href="elements/widget-feature.html">
-  <link rel="import" href="elements/widget-photos.html">
-  <link rel="import" href="elements/widget-videos.html">
-  <link rel="import" href="elements/play-svg-icon.html">
-  <link rel="import" href="elements/component-svg-icon.html">
-</head>
+    <body unresolved id="mainContainer">
+        <span id="browser-sync-binding"></span>
+        <template is="dom-bind" id="app">
+            <style is="custom-style">
+                :root {
+                    min-width: 320px;
+                }
 
-<body unresolved id="mainContainer">
-  <span id="browser-sync-binding"></span>
-  <template is="dom-bind" id="app">
-    <style is="custom-style">
-      :root {
-        min-width: 320px;
-      }
+                h1,
+                h3 {
+                    font-weight: 300;
+                }
 
-      h1, h3 {
-        font-weight: 300;
-      }
+                footer {
+                    padding-top: 4rem;
+                    padding-bottom: 20rem;
+                }
 
-      footer {
-        padding-top: 4rem;
-        padding-bottom: 20rem;
-      }
+                footer small {
+                    color: var(--darker-color);
+                    font-size: var(--small-size);
+                    padding: 1.2rem;
+                }
 
-      footer small {
-        color: var(--darker-color);
-        font-size: var(--small-size);
-        padding: 1.2rem;
-      }
+                @media screen and (max-width: 640px) {
+                    footer small {
+                        padding: 0.6rem;
+                    }
+                }
+            </style>
+            <widget-header></widget-header>
+            <hr />
+            <main>
+                <light-box></light-box>
+                <iron-pages
+                    attr-for-selected="data-route"
+                    selected="{{ route }}"
+                >
+                    <section data-route="home">
+                        <widget-slideshow
+                            src="https://tomas-api.fly.dev/11941740"
+                        ></widget-slideshow>
+                        <hr />
+                        <!--<widget-feature></widget-feature>-->
+                        <!--<widget-photos data-route="photography" src="https://picasaweb.google.com/data/feed/base/user/115234932010059601425/albumid/6217459073165908641?alt=json&kind=photo"></widget-photos>-->
+                        <hr />
+                        <!--<h1>NEWS</h1>-->
 
-      @media screen and (max-width: 640px) {
-        footer small {
-          padding: .6rem;
-        }
-      }
-    </style>
-    <widget-header></widget-header>
-    <hr>
-    <main>
-      <light-box></light-box>
-      <iron-pages attr-for-selected="data-route" selected="{{route}}">
-        <section data-route="home">
-
-          <widget-slideshow src="https://api.vimeo.com/me/albums/3674768/videos?sort=manual&per_page=50&access_token=5329144dd1b697d05bbf580d3b10c6d3"></widget-slideshow>
-          <hr>
-          <!--<widget-feature></widget-feature>-->
-          <!--<widget-photos data-route="photography" src="https://picasaweb.google.com/data/feed/base/user/115234932010059601425/albumid/6217459073165908641?alt=json&kind=photo"></widget-photos>-->
-          <hr>
-          <!--<h1>NEWS</h1>-->
-
-          <widget-videos src="https://api.vimeo.com/me/albums/2334700/videos?sort=manual&per_page=50&access_token=5329144dd1b697d05bbf580d3b10c6d3"></widget-videos>
-          <!--<hr>
+                        <widget-videos
+                            src="https://tomas-api.fly.dev/2334700"
+                        ></widget-videos>
+                        <!--<hr>
 					<h1>Knucklehead Community</h1>
 					<h3>Tomas Jonsgården on Sterntag Film</h3>
 					<widget-videos src="https://vimeo.com/api/v2/album/2417751/videos.json"></widget-videos>-->
-          <hr>
-          <widget-about></widget-about>
-          <hr>
-          <widget-contact></widget-contact>
-        </section>
+                        <hr />
+                        <widget-about></widget-about>
+                        <hr />
+                        <widget-contact></widget-contact>
+                    </section>
 
+                    <widget-videos
+                        data-route="commercials"
+                        src="https://tomas-api.fly.dev/2329074"
+                    ></widget-videos>
+                    <section data-route="drama">
+                        <widget-poster title="mafia"></widget-poster>
+                        <widget-poster title="kasper_sophie"></widget-poster>
+                        <widget-poster
+                            title="want_to_see_something"
+                        ></widget-poster>
+                        <widget-videos
+                            src="https://tomas-api.fly.dev/2329080"
+                        />
+                    </section>
+                    <div data-route="photography">
+                        <widget-photos
+                            orientation="landscape"
+                            src="https://cdn.contentful.com/spaces/x2jk27vcace8/environments/master/entries?access_token=BPmzWJZLubw2uoXG25JO59RJQoUc-wpteTjtsTXYPY0&include=1"
+                        ></widget-photos>
+                        <hr />
+                        <widget-photos
+                            orientation="portrait"
+                            src="https://cdn.contentful.com/spaces/x2jk27vcace8/environments/master/entries?access_token=BPmzWJZLubw2uoXG25JO59RJQoUc-wpteTjtsTXYPY0&include=1"
+                        ></widget-photos>
+                    </div>
+                    <widget-contact data-route="contact"></widget-contact>
+                    <widget-about data-route="about"></widget-about>
+                </iron-pages>
+            </main>
+            <hr />
+            <footer>
+                <small>© Tomas Jonsgården</small>
+            </footer>
+        </template>
 
-          <widget-videos data-route="commercial" src="https://api.vimeo.com/me/albums/2329074/videos?sort=manual&per_page=50&access_token=5329144dd1b697d05bbf580d3b10c6d3"></widget-videos>
-
-
-        <widget-videos data-route="narrative" src="https://api.vimeo.com/me/albums/2329080/videos?sort=manual&per_page=50&access_token=5329144dd1b697d05bbf580d3b10c6d3"></widget-videos>
-        <div data-route="photography">
-          <widget-photos orientation="landscape" src="https://picasaweb.google.com/data/feed/base/user/115234932010059601425/albumid/6218961437089181137?alt=json&kind=photo"></widget-photos>
-          <hr>
-          <widget-photos orientation="portrait" src="https://picasaweb.google.com/data/feed/base/user/115234932010059601425/albumid/6218961437089181137?alt=json&kind=photo"></widget-photos>
-        </div>
-        <widget-contact data-route="contact"></widget-contact>
-        <widget-about data-route="about"></widget-about>
-      </iron-pages>
-    </main>
-    <hr>
-    <footer>
-      <small>© Tomas Jonsgården</small>
-    </footer>
-
-  </template>
-
-  <script>
-    /*
+        <script>
+            /*
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
@@ -157,119 +215,136 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-(function(document) {
-  'use strict';
+            (function (document) {
+                "use strict";
 
-  // Grab a reference to our auto-binding template
-  // and give it some initial binding values
-  // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
-  var app = document.querySelector('#app');
+                // Grab a reference to our auto-binding template
+                // and give it some initial binding values
+                // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
+                var app = document.querySelector("#app");
 
-  // Listen for template bound event to know when bindings
-  // have resolved and content has been stamped to the page
-  app.addEventListener('dom-change', function() {
-    console.log('Our app is ready to rock!');
-  });
+                // Listen for template bound event to know when bindings
+                // have resolved and content has been stamped to the page
+                app.addEventListener("dom-change", function () {
+                    console.log("Our app is ready to rock!");
+                });
 
-  // See https://github.com/Polymer/polymer/issues/1381
-  window.addEventListener('WebComponentsReady', function() {
-    // imports are loaded and elements have been registered
-  });
+                // See https://github.com/Polymer/polymer/issues/1381
+                window.addEventListener("WebComponentsReady", function () {
+                    // imports are loaded and elements have been registered
+                });
 
-  // Main area's paper-scroll-header-panel custom condensing transformation of
-  // the appName in the middle-container and the bottom title in the bottom-container.
-  // The appName is moved to top and shrunk on condensing. The bottom sub title
-  // is shrunk to nothing on condensing.
-  addEventListener('body', function(e) {
-    var appName = document.querySelector('#mainToolbar .app-name');
-    var middleContainer = document.querySelector('#mainToolbar .middle-container');
-    var bottomContainer = document.querySelector('#mainToolbar .bottom-container');
-    var detail = e.detail;
-    var heightDiff = detail.height - detail.condensedHeight;
-    var yRatio = Math.min(1, detail.y / heightDiff);
-    var maxMiddleScale = 0.50;  // appName max size when condensed. The smaller the number the smaller the condensed size.
-    var scaleMiddle = Math.max(maxMiddleScale, (heightDiff - detail.y) / (heightDiff / (1-maxMiddleScale))  + maxMiddleScale);
-    var scaleBottom = 1 - yRatio;
+                // Main area's paper-scroll-header-panel custom condensing transformation of
+                // the appName in the middle-container and the bottom title in the bottom-container.
+                // The appName is moved to top and shrunk on condensing. The bottom sub title
+                // is shrunk to nothing on condensing.
+                addEventListener("body", function (e) {
+                    var appName = document.querySelector(
+                        "#mainToolbar .app-name"
+                    );
+                    var middleContainer = document.querySelector(
+                        "#mainToolbar .middle-container"
+                    );
+                    var bottomContainer = document.querySelector(
+                        "#mainToolbar .bottom-container"
+                    );
+                    var detail = e.detail;
+                    var heightDiff = detail.height - detail.condensedHeight;
+                    var yRatio = Math.min(1, detail.y / heightDiff);
+                    var maxMiddleScale = 0.5; // appName max size when condensed. The smaller the number the smaller the condensed size.
+                    var scaleMiddle = Math.max(
+                        maxMiddleScale,
+                        (heightDiff - detail.y) /
+                            (heightDiff / (1 - maxMiddleScale)) +
+                            maxMiddleScale
+                    );
+                    var scaleBottom = 1 - yRatio;
 
-    // Move/translate middleContainer
-    Polymer.Base.transform('translate3d(0,' + yRatio * 100 + '%,0)', middleContainer);
+                    // Move/translate middleContainer
+                    Polymer.Base.transform(
+                        "translate3d(0," + yRatio * 100 + "%,0)",
+                        middleContainer
+                    );
 
-    // Scale bottomContainer and bottom sub title to nothing and back
-    Polymer.Base.transform('scale(' + scaleBottom + ') translateZ(0)', bottomContainer);
+                    // Scale bottomContainer and bottom sub title to nothing and back
+                    Polymer.Base.transform(
+                        "scale(" + scaleBottom + ") translateZ(0)",
+                        bottomContainer
+                    );
 
-    // Scale middleContainer appName
-    Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)', appName);
-  });
+                    // Scale middleContainer appName
+                    Polymer.Base.transform(
+                        "scale(" + scaleMiddle + ") translateZ(0)",
+                        appName
+                    );
+                });
 
-  // Close drawer after menu item is selected if drawerPanel is narrow
-  app.onDataRouteClick = function() {
-    var drawerPanel = document.querySelector('#paperDrawerPanel');
-    if (drawerPanel.narrow) {
-      drawerPanel.closeDrawer();
-    }
-  };
+                // Close drawer after menu item is selected if drawerPanel is narrow
+                app.onDataRouteClick = function () {
+                    var drawerPanel =
+                        document.querySelector("#paperDrawerPanel");
+                    if (drawerPanel.narrow) {
+                        drawerPanel.closeDrawer();
+                    }
+                };
 
-  // Scroll page to top and expand header
-  app.scrollPageToTop = function() {
-    document.getElementById('mainContainer').scrollTop = 0;
-  };
+                // Scroll page to top and expand header
+                app.scrollPageToTop = function () {
+                    document.getElementById("mainContainer").scrollTop = 0;
+                };
+            })(document);
+        </script>
 
-})(document);
-</script>
+        <script>
+            window.addEventListener("WebComponentsReady", function () {
+                // We use Page.js for routing. This is a Micro
+                // client-side router inspired by the Express router
+                // More info: https://visionmedia.github.io/page.js/
 
-<script>
-    window.addEventListener('WebComponentsReady', function() {
-        // We use Page.js for routing. This is a Micro
-        // client-side router inspired by the Express router
-        // More info: https://visionmedia.github.io/page.js/
+                // Middleware
+                function scrollToTop(ctx, next) {
+                    app.scrollPageToTop();
+                    next();
+                }
 
-        // Middleware
-        function scrollToTop(ctx, next) {
-            app.scrollPageToTop();
-            next();
-        }
+                function stateChange(ctx, next) {
+                    $("a[href].is-selected").removeClass("is-selected");
+                    $(
+                        'a[href="' + window.location.origin + ctx.path + '"]'
+                    ).addClass("is-selected");
+                    next();
+                }
 
-        function stateChange(ctx, next) {
-            $('a[href].is-selected').removeClass('is-selected');
-            $('a[href="' + window.location.origin + ctx.path + '"]').addClass('is-selected');
-            next();
-        }
+                // Routes
+                page("/", scrollToTop, stateChange, function () {
+                    app.route = "home";
+                });
 
-        // Routes
-        page('/', scrollToTop, stateChange, function() {
-            app.route = 'home';
-        });
+                page("/commercials", scrollToTop, stateChange, function () {
+                    app.route = "commercials";
+                });
 
-        page('/commercial', scrollToTop, stateChange, function() {
-            app.route = 'commercial';
-        });
+                page("/drama", scrollToTop, stateChange, function () {
+                    app.route = "drama";
+                });
 
-        page('/narrative', scrollToTop, stateChange, function() {
-            app.route = 'narrative';
-        });
+                page("/photography", scrollToTop, stateChange, function () {
+                    app.route = "photography";
+                });
 
-        page('/photography', scrollToTop, stateChange, function() {
-            app.route = 'photography';
-        });
+                page("/contact", scrollToTop, stateChange, function () {
+                    app.route = "contact";
+                });
 
-        page('/contact', scrollToTop, stateChange, function() {
-            app.route = 'contact';
-        });
+                page("/about", scrollToTop, stateChange, function () {
+                    app.route = "about";
+                });
 
-        page('/about', scrollToTop, stateChange, function() {
-            app.route = 'about';
-        });
-
-        // add #! before urls
-        page({
-            hashbang: true
-        });
-
-    });
-</script>
-
-
-
-</body>
-
+                // add #! before urls
+                page({
+                    hashbang: true,
+                });
+            });
+        </script>
+    </body>
 </html>

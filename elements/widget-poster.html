@@ -1,0 +1,130 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../../assets/libs/polymer/polymer.html">
+
+<dom-module id="widget-poster">
+
+	<template>
+		<iron-ajax url="https://vimeo.com/api/v2/4487625/info.json" last-response="{{data}}" auto></iron-ajax>
+		<style include='shared-styles'></style>
+		<style>
+			:host {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				box-sizing: border-box;
+				padding: 2.4rem 1.2rem 2.4rem 1.2rem;
+			}
+
+			/*p {
+				color: var(--darker-color);
+				font-size: var(--medium-size);
+				font-weight: 200;
+				padding-right: 2rem;
+				margin: 0;
+				margin-bottom: 2rem;
+			}
+
+			h2 {
+				color: var(--darkest-color);
+				font-weight: 400;
+				text-transform: uppercase;
+				font-size: var(--larger-size);
+				margin: 0;
+				margin-bottom: 2rem;
+				padding-right: 2rem;
+			}*/
+
+			iron-image {
+				width: 100%;
+				background-color: black;
+			}
+
+			iron-image:before {
+				content: "";
+				display: block;
+				margin-top: 100%;
+			}
+
+			h2 {
+				font-weight: 300;
+				margin: 0;
+			}
+			.poster-image {
+				flex: 1;
+			}
+
+			.poster-description {
+				flex: 2;
+			}
+			.awards {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr 1fr;
+				column-gap: 30px;
+			}
+
+			@media screen and (max-width: 640px) {
+				:host {
+					display: block;
+					-webkit-column-count: 1;
+					-moz-column-count: 1;
+					column-count: 1;
+				}
+				:host {
+					padding: 1.2rem .6rem 1.2rem .6rem;
+				}
+
+				.awards {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+		</style>
+		<div class="poster-image"><iron-image sizing="contain" preload fade src="/assets/images/{{title}}.jpg"></iron-image></div>
+		<div class="poster-description">
+			<p><b>{{getFilmTitle(title)}}</b>{{getFilmBody(title)}}</p>
+			<p>{{getFilmDirector(title)}}</p>
+			<div class="awards">
+				<template is="dom-repeat" items="{{getFilmAwards(title)}}">
+					<iron-image sizing="contain" preload fade src="/assets/images/{{item}}">
+				</template>
+			</div>
+			
+		</div>
+		<hr />
+	</template>
+
+	<script>
+		Polymer({
+			is: 'widget-poster',
+			properties: {
+				title: {
+					type: String
+				}
+			},
+			getFilmTitle: function(title) {
+				console.log({title})
+				return title === "kasper_sophie" ? 'Kasper and Sophie (2022)' : title === 'mafia' ? 'Mafia (2025)' : 'Want To See Something? (2011)';
+			},
+			getFilmBody: function(title) {
+				return title === "kasper_sophie" ? ' A provocative story of love and betrayal in the midst of adolescent mental illness. This single shot film raises the question of how far one is willing to go for the sake of love culminating in a terrible deed. ' : title === 'mafia' ? ' is a six-episode crime series, drawing inspiration from actual events. It unfolds the transformation of Sweden in the 1990s, evolving from a relatively tranquil nation untouched by organised crime into a land marked by intense gang conflicts and violent shootouts. The series also delves into the life of the notorious gangster Radovan “Jakov” Jakovic, chronicling his journey from poverty to wealth. ' : ' A film based on an original story by the American author Raymond Carver. About a complex conflict between two neighbors that has its bases in a tragic event that ripped up the ties between the old friends.';
+			},
+
+			getFilmDirector: function(title) {
+				return title === "mafia" ? 'Director ep 4-6: Tomas Jonsgården' : 'Writer & Director: Tomas Jonsgården';
+			},
+
+			getFilmAwards: function(title) {
+				return []
+			},
+
+		});
+	</script>
+
+</dom-module>

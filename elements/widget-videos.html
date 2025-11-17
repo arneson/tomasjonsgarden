@@ -181,7 +181,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           return image[4].link;
         },
         trim: function (desc) {
-          return desc.split('<')[0];
+          return desc ? desc.split('<')[0] : "";
         },
         computeTags: function (tags) {
           return tags.split(', ').splice(0, 1);
@@ -196,11 +196,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           e.stopPropagation();
           var lightBox = $('light-box');
           var files = e.model.get('item.files');
-          var FilteredFiles = files.filter(function (file) {
-            return (file.quality === 'sd' || file.quality === 'hd') && file.height == 720;
-          });
-          console.log('FilteredFiles:', FilteredFiles);
-          lightBox.attr('video', e.model.get('item.files.0.link'));
+          const hd = files.find(function (file) {
+					  return (file.quality === 'hd') && file.height === 720;
+          })
+          const sd = files.find(function (file) {
+            return (file.quality === 'sd') && file.height === 720;
+          })
+          const fallback = files[0];
+          lightBox.attr('video', (hd || sd || fallback).link);
           lightBox.attr('video-title', e.model.get('item.name'));
           lightBox.attr('video-description', this.trim(e.model.get('item.description')));
 

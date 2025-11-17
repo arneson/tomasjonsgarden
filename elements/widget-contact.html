@@ -7,117 +7,143 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<link rel="import" href="../../assets/libs/polymer/polymer.html">
+<link rel="import" href="../../assets/libs/polymer/polymer.html" />
 
 <dom-module id="widget-contact">
-	<template>
-		<style include='shared-styles'></style>
-		<style>
-			:host {
-				display: block;
-				padding: 1.2rem;
-			}
+    <template>
+        <style include="shared-styles"></style>
+        <style>
+            :host {
+                display: block;
+                padding: 1.2rem;
+            }
 
-			section {
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				justify-content: space-between;
-				color: var(--darker-color);
-			}
+            section {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                color: var(--darker-color);
+            }
 
-			h3 {
-				font-style: normal;
-				font-weight: 300;
-			}
+            h3 {
+                font-style: normal;
+                font-weight: 300;
+            }
 
-			footer {
+            footer {
+                padding-top: 13px;
+                padding-bottom: 20px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                font-size: var(--small-size);
+            }
 
-				padding-top: 13px;
-				padding-bottom: 20px;
-				margin-top: 20px;
-				margin-bottom: 20px;
-				font-size: var(--small-size);
-			}
+            address {
+                display: flex;
+                flex-direction: column;
+            }
 
-			address {
-				display: flex;
-				flex-direction: column;
-			}
+            address span {
+                font-weight: 600;
+                color: var(--medium-color);
+                font-style: normal;
+                margin-bottom: 1rem;
+            }
 
-			address span {
-				font-weight: 600;
-				color: var(--medium-color);
-				font-style: normal;
-				margin-bottom: 1rem;
-			}
+            a {
+                color: inherit;
+                font-style: normal;
+                margin-bottom: 1rem;
+                text-decoration: none;
+            }
 
-			a {
-				color: inherit;
-				font-style: normal;
-				margin-bottom: 1rem;
-				text-decoration: none;
-			}
+            a:hover {
+                text-decoration: underline;
+            }
 
-			a:hover {
-				text-decoration: underline;
+            @media screen and (max-width: 1280px) {
+                address {
+                    flex-basis: 50%;
+                    margin-bottom: 4rem;
+                }
+            }
 
-			}
+            @media screen and (max-width: 640px) {
+                :host {
+                    padding: 0.6rem;
+                }
+                address {
+                    flex-basis: 100%;
+                    margin-bottom: 4rem;
+                }
+            }
+        </style>
+        <footer>
+            <nav>
+                <section>
+                    <address>
+                        <h3>Scandinavia</h3>
+                        <a href="http://www.brf.co">brf.co</a>
+                        <a href="mailto:tomas@tomasjonsgarden.com"
+                            >tomas@tomasjonsgarden.com</a
+                        >
+                        <a href="mailto:mail@magnusakerstedt.com"
+                            >mail@magnusakerstedt.com</a
+                        >
+                    </address>
+                    <address>
+                        <h3>UK</h3>
+                        <span>Jani Guest</span>
+                        <a href="https://www.creatorsinc.net"
+                            >creatorsinc.net</a
+                        >
+                        <a href="mailto:jani@creatorsinc.net"
+                            >jani@creatorsinc.net</a
+                        >
+                    </address>
+                    <address>
+                        <h3>US</h3>
+                        <span>Brent Stoller</span>
+                        <a href="https://www.gravy-films.com"
+                            >gravy-films.com</a
+                        >
+                        <a href="mailto:brent@gravy-films.com"
+                            >brent@gravy-films.com</a
+                        >
+                    </address>
+                    <address>
+                        <h3>FRANCE</h3>
+                        <span>Emmanuel Guiraud</span>
+                        <a href="https://75.tv">75.tv</a>
+                        <a href="mailto:emmanuel@75.tv">emmanuel@75.tv</a>
+                    </address>
+                    <address>
+                        <h3>GERMANY</h3>
+                        <span>Katherine Smithson</span>
+                        <a href="https://www.markenfilm.de">markenfilm.de</a>
+                        <a href="mailto:katherine.smithson@markenfilm.group"
+                            >katherine.smithson@markenfilm.group</a
+                        >
+                    </address>
+                    <address>
+                        <h3>Film & TV</h3>
+                        <span>Sophie Smirnakos</span>
+                        <a href="https://www.salomonssonagency.se"
+                            >salomonssonagency.se</a
+                        >
+                        <a href="mailto:sophie@salomonssonagency.com"
+                            >sophie@salomonssonagency.com</a
+                        >
+                    </address>
+                </section>
+            </nav>
+        </footer>
+    </template>
 
-			@media screen and (max-width: 1280px) {
-				address {
-					flex-basis: 50%;
-					margin-bottom: 4rem;
-				}
-			}
-
-			@media screen and (max-width: 640px) {
-				:host {
-					padding: .6rem;
-				}
-				address {
-					flex-basis: 100%;
-					margin-bottom: 4rem;
-				}
-			}
-		</style>
-		<footer>
-			<nav>
-				<section>
-					<address>
-						<h3>Contact</h3>
-						<span>Tomas Jonsgården</span>
-						<a href="mailto:tomas@tomasjonsgården.com">tomas@tomasjonsgården.com</a>
-					</address>
-					<address>
-						<h3>UK</h3>
-						<span>Mathew Brown</span>
-
-						<a href="http://www.knucklehead.co.uk">www.knucklehead.co.uk</a>
-						<a href="mailto:matthew@knucklehead.co.uk">matthew@knucklehead.co.uk</a>
-					</address>
-					<address>
-						<h3>US</h3>
-						<span>Dave Morrison</span>
-						<a href="http://www.resetcontent.com">www.resetcontent.com</a>
-						<a href="mailto:dave@resetcontent.com">dave@resetcontent.com</a>
-					</address>
-					<address>
-						<h3>Scandinavia</h3>
-						<span>Magnus Åkerstedt</span>
-						<a href="http://www.baconsth.com">www.baconsth.com</a>
-						<a href="mailto:magnus@baconsth.com">magnus@baconsth.com</a>
-					</address>
-				</section>
-			</nav>
-		</footer>
-	</template>
-
-	<script>
-		Polymer({
-			is: 'widget-contact',
-
-		});
-	</script>
-
+    <script>
+        Polymer({
+            is: "widget-contact",
+        });
+    </script>
 </dom-module>
