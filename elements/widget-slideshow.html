@@ -134,7 +134,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             iron-image:before {
                 content: "";
                 display: block;
-                margin-top: calc(100% * var(--aspect-ratio));
+                /* 16:9 widescreen hero (9/16 = 56.25%) */
+                margin-top: 56.25%;
             }
 
             :host:hover header {
@@ -268,7 +269,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 lightBox.attr("video-title", e.model.get("item.name"));
                 lightBox.attr(
                     "video-description",
-                    this.trim(e.model.get("item.description"))
+                    this.trim(e.model.get("item.description")),
                 );
                 console.log(e.model.get("item.tags"));
                 // if ($.inArray('sd', e.model.get('item.tags').split(', ')) > -1) {
@@ -280,7 +281,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 lightBox.children(".dim-screen").on("mousedown", function () {
                     e.stopPropagation();
                     lightBox.removeAttr(
-                        "video video-title video-description video-date video-quality"
+                        "video video-title video-description video-date video-quality",
                     );
                     // lightBox.removeAttr('iron-image');
                     return false;
