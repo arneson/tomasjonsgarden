@@ -70,6 +70,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				column-gap: 30px;
 			}
 
+			.press {
+				text-align: center;
+				margin: 2.4rem auto 0;
+				max-width: 320px;
+			}
+
+			.press:before {
+				content: "";
+				display: block;
+				width: 40px;
+				height: 2px;
+				background: var(--accent-color);
+				margin: 0 auto 1.6rem;
+			}
+
+			.press img {
+				display: block;
+				margin: 0 auto;
+				height: auto;
+				/* Logos are black ink on transparent; invert to white for the black page */
+				filter: invert(1);
+			}
+
+			.press .press-headline {
+				width: 68%;
+				margin: 0 auto 0.4rem;
+			}
+
+			.press .press-source {
+				width: 85%;
+			}
+
+			/* Mafia: anchor the NYT accolade to the bottom, aligned with the poster's bottom edge */
+			:host([title="mafia"]) {
+				align-items: stretch;
+			}
+
+			:host([title="mafia"]) .poster-description {
+				display: flex;
+				flex-direction: column;
+			}
+
+			:host([title="mafia"]) .press {
+				margin-top: auto;
+			}
+
 			@media screen and (max-width: 640px) {
 				:host {
 					display: block;
@@ -84,6 +130,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				.awards {
 					grid-template-columns: 1fr 1fr;
 				}
+
+				.press {
+					max-width: 100%;
+				}
 			}
 		</style>
 		<div class="poster-image"><iron-image sizing="contain" preload fade src="/assets/images/{{title}}.jpg"></iron-image></div>
@@ -95,7 +145,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					<iron-image sizing="contain" preload fade src="/assets/images/{{item}}">
 				</template>
 			</div>
-			
+			<template is="dom-if" if="{{isMafia(title)}}">
+				<div class="press">
+					<img class="press-headline" src="/assets/images/nyt-best-tv-2025.png" alt="Best TV Shows of 2025">
+					<img class="press-source" src="/assets/images/nyt-masthead.png" alt="The New York Times">
+				</div>
+			</template>
 		</div>
 		<hr />
 	</template>
@@ -122,6 +177,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			getFilmAwards: function(title) {
 				return []
+			},
+
+			isMafia: function(title) {
+				return title === 'mafia';
 			},
 
 		});
